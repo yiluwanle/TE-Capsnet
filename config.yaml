@@ -1,0 +1,56 @@
+# 显卡配置
+device: cuda
+device_list: '0, 1, 2, 3'
+
+# 数据集目录
+data: data/METR-LA/
+# 模型保存目录
+save: model/METR-LA/
+# 最佳模型保存位置
+checkpoint: ''
+main_id: 0
+
+batch_size: 128
+num_workers: 8
+learn_rate: 0.0001
+weight_decay: 0.0001
+epochs: 100
+
+# 每多少次迭代进行输出
+print_every: 100
+# 是否启用时间嵌入
+tod: true
+# 是否使用星期嵌入
+dow: true
+# 输入矩阵的高
+height: 179
+# 输入矩阵的宽
+width: 354
+# 输入的时间步数
+time_step: 12
+# 输出的时间步数
+time_end: 12
+# 传感器数
+num_sensor: 207
+# 第一层卷积的输出维度
+conv1_channels: 32
+# 第二层卷积的输出维度
+conv2_channels: 64
+# 初级胶囊层的胶囊个数
+caps1_num: 8
+# 初级胶囊层的胶囊通道数
+caps1_channels: 16
+# 高级胶囊层的胶囊个数
+caps2_num: 16
+# 高级胶囊层的胶囊通道数
+caps2_channels: 32
+# 24小时的时间步数
+steps_per_day: 288
+# 时间嵌入层的维度
+tod_embedding_dim: 24
+# 星期嵌入层的维度
+dow_embedding_dim: 24
+# TCN各层的输出维度
+tcn_list:
+  - 64
+  - 128
