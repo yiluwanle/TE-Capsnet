@@ -11,7 +11,8 @@ from collections import OrderedDict
 with open('config.yaml', 'r', encoding='utf-8') as f:
     args = yaml.load(f.read(), Loader=yaml.FullLoader)
 
-
+with open(args['save']+"checkpoint.txt", 'r', encoding='utf-8') as f:
+    file_path = f.read()
 def test():
     device = torch.device(args['device'])
     data = util.load_dataset_test(args['data'])
@@ -21,7 +22,7 @@ def test():
     model = torch.nn.DataParallel(model)
 
     new_state_dict = OrderedDict()
-    for key, value in torch.load(args['checkpoint']).items():
+    for key, value in torch.load(file_path).items():
         name = 'module.' + key
         new_state_dict[name] = value
     model.load_state_dict(new_state_dict)

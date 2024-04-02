@@ -1,0 +1,1 @@
+model/METR-LA/best/exp_0_best_epoch_77_5.39.pth
